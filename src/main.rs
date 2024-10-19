@@ -1,7 +1,6 @@
 use std::fs::File;
-use std::io::Read;
+use std::io::{self, Read};
 use clap::Parser;
-use std::env;
 use std::path::Path;
 
 #[derive(Parser)]
@@ -13,8 +12,15 @@ struct Cli {
 }
 
 fn main() {
+    let stdin = io::stdin();
+    // this gets stdin from pipeline
+    loop {
+        let mut input = String::new();
+        stdin.read_line(&mut input).expect("Error reading stdin");
+        println!("{}", input);
+        input.clear();
+    }
     let cli = Cli::parse();
-    // let args: Vec<String> = env::args().skip(1).collect();
 
     if cli.file != "" {
         let path = Path::new(&cli.file);
