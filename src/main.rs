@@ -8,17 +8,13 @@ use std::path::Path;
 struct Cli {
     #[arg(default_value = "", short, long, help = "enter file to read from")]
     file: String,
-    input: Vec<String>,
 }
 
 fn main() {
-    let stdin = io::stdin();
+    let lines = io::stdin().lines();
     // this gets stdin from pipeline
-    loop {
-        let mut input = String::new();
-        stdin.read_line(&mut input).expect("Error reading stdin");
-        println!("{}", input);
-        input.clear();
+    for line in lines {
+        println!("{}", line.unwrap());
     }
     let cli = Cli::parse();
 
