@@ -2,6 +2,7 @@ use std::fs::read_to_string;
 use std::io::{self};
 use clap::Parser;
 use regex::Regex;
+use colored::Colorize;
 
 #[derive(Parser)]
 
@@ -21,11 +22,6 @@ fn main() {
                 println!("{}", line);
             }
         }
-        // let path = Path::new(&cli.file);
-        // let mut file = File::open(&path).unwrap();
-        // let mut contents = String::new();
-        // file.read_to_string(&mut contents).unwrap();
-        // println!("{}", contents);
     } else {
         // this gets stdin from pipeline
         for line in lines {
