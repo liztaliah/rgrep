@@ -27,8 +27,8 @@ fn main() {
         for line in lines {
             if re.is_match(line.as_ref().unwrap().as_str()) {
                 // what the fuck do i do here
-                let output: Vec<&str> = line.unwrap().as_str().split(&cli.query).collect();
-                println!("{}", output.join(" "));
+                let output: Vec<&str> = line.as_ref().unwrap().as_str().split(&cli.query).collect();
+                println!("{}{}{}", output[0], &cli.query.red(), output[1]);
                 // println!("{}", line.unwrap());
             }
         }
