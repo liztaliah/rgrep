@@ -26,7 +26,10 @@ fn main() {
         // this gets stdin from pipeline
         for line in lines {
             if re.is_match(line.as_ref().unwrap().as_str()) {
-                println!("{}", line.unwrap());
+                // what the fuck do i do here
+                let output: Vec<&str> = line.unwrap().as_str().split(&cli.query).collect();
+                println!("{}", output.join(" "));
+                // println!("{}", line.unwrap());
             }
         }
     }
